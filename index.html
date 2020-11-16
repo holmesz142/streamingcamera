@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Streaming</title>
+
+    <style>
+        #video {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <video id="video" playsinline autoplay></video>
+
+    </div>
+
+    <div>
+        <button onclick="showMyFace()">Click</button>
+    </div>
+    <script>
+        var video = document.getElementById("video");
+        var servers = { 'iceServers': [{ 'urls': 'stun:stun.services.mozilla.com' }, { 'urls': 'stun:stun.l.google.com:19302' }, { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'websitebeaver@mail.com' }] };
+        var pc = new RTCPeerConnection(servers);
+        function showMyFace() {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+                .then(stream => video.srcObject = stream)
+                .then(stream => pc.addStream(stream));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "camerastreaming",
+  "version": "1.0.0",
+  "description": "streaming camera app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Holmesz",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}
